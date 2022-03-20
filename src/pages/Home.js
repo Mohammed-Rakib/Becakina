@@ -10,7 +10,7 @@ const Home = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:7070/api/products")
+    fetch("https://still-eyrie-85728.herokuapp.com/api/products")
       .then((response) => response.json())
       .then((data) => setProducts(data.data));
   }, []);
@@ -19,7 +19,10 @@ const Home = () => {
     <>
       <Header />
       {products?.length === 0 ? (
-        <div>
+        <div
+          className="flex items-center justify-center"
+          style={{ height: "60vh" }}
+        >
           <h1 className="py-10 text-center text-red-500">Products Loading</h1>
         </div>
       ) : (

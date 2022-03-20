@@ -18,7 +18,7 @@ const Details = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       const res = await fetch(
-        `http://localhost:7070/api/products/singleProduct/${id}`
+        `https://still-eyrie-85728.herokuapp.com/api/products/singleProduct/${id}`
       );
       const data = await res.json();
       setProduct(data);
@@ -28,7 +28,9 @@ const Details = () => {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const res = await fetch(`http://localhost:7070/api/products`);
+      const res = await fetch(
+        `https://still-eyrie-85728.herokuapp.com/api/products`
+      );
       const data = await res.json();
       setProducts(data.data);
     };
@@ -68,7 +70,7 @@ const Details = () => {
     <section className="bg-gray-50 py-5 ">
       <div className="md:w-9/12 w-11/12 mx-auto bg-white py-5 shadow-lg rounded">
         {product === null ? (
-          <p className="py-10 flex items-center justify-center text-red-400">
+          <p className="py-56 flex items-center justify-center text-red-400">
             product loading...
           </p>
         ) : (

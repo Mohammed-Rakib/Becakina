@@ -16,7 +16,7 @@ const Layout = () => {
     setLoading(true);
     const fetchProducts = async () => {
       const res = await fetch(
-        `http://localhost:7070/api/products?page=${page}&&size=${size}`
+        `https://still-eyrie-85728.herokuapp.com/api/products?page=${page}&&size=${size}`
       );
       const data = await res.json();
       setProducts(data.data);
@@ -31,7 +31,10 @@ const Layout = () => {
     if (!text) {
       cogoToast.warn("Please input something");
     } else {
-      fetch(`http://localhost:7070/api/products/search?name=${text}`)
+      setLoading(true);
+      fetch(
+        `https://still-eyrie-85728.herokuapp.com/api/products/search?name=${text}`
+      )
         .then((response) => response.json())
         .then((data) => {
           setPages(0);
@@ -40,7 +43,7 @@ const Layout = () => {
               .reduce((map, obj) => map.set(obj._id, obj), new Map())
               .values(),
           ];
-
+          setLoading(false);
           setProducts(uniqUsers);
         });
     }
@@ -84,7 +87,7 @@ const Layout = () => {
 
         {/* // all products  */}
         {loading === true ? (
-          <div className="py-10 flex justify-center items-center">
+          <div className="py-56 flex justify-center items-center">
             <p className="text-red-500">Products loading...</p>
           </div>
         ) : (

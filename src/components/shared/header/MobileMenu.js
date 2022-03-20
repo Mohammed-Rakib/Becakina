@@ -63,7 +63,7 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
         <Link to="/cart" className="px-3  relative">
           <AiOutlineShopping className="text-2xl hover:text-green-500 relative " />
           <span className="absolute bottom-3 right-1 bg-green-400 px-1 text-sm rounded-full">
-            {cart.length}
+            {cart?.length}
           </span>
         </Link>
       </div>

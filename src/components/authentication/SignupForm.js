@@ -28,7 +28,10 @@ const SignupForm = () => {
     };
 
     axios
-      .post("http://localhost:7070/api/users/signup", userInfo)
+      .post(
+        "https://still-eyrie-85728.herokuapp.com/api/users/signup",
+        userInfo
+      )
       .then((response) => {
         dispatch(signin(response.data));
         navigate("/dashboard/profile");

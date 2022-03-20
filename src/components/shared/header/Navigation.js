@@ -11,14 +11,15 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const cart = useSelector((state) => state.cart.cart);
+
   const user = useSelector((state) => state.user.user);
 
   return (
-    <div className="py-4 text-white bg-gray-800">
+    <div className="py-4 ">
       <div className="md:w-9/12 w-11/12 mx-auto flex justify-between items-center py-2">
         <div>
           <Link to="/">
-            <h1 className="md:text-4xl text-3xl  text-white font-bold first-letter:text-pink-500">
+            <h1 className="xl:text-5xl  md:text-4xl text-3xl font-bold first-letter:text-pink-500">
               Beca K<span className="text-green-500">i</span>na
             </h1>
           </Link>
@@ -44,7 +45,7 @@ const Navigation = () => {
           <Link to="/cart" className="px-3  relative">
             <AiOutlineShopping className="text-2xl hover:text-green-500 relative " />
             <span className="absolute bottom-3 right-1 bg-green-500 w-5 text-center text-sm rounded-full">
-              {cart.length}
+              {cart?.length}
             </span>
           </Link>
         </div>
@@ -52,7 +53,7 @@ const Navigation = () => {
         {/* // menu button */}
         <div className="md:hidden flex items-center">
           <button onClick={() => setIsOpen(!isOpen)}>
-            <CgMenu className="text-4xl mt-2 text-white" />
+            <CgMenu className="text-4xl mt-2 " />
           </button>
         </div>
       </div>

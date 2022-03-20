@@ -14,7 +14,7 @@ const CartLayout = () => {
           <div className="grid md:grid-cols-6 bg-white">
             <div className=" lg:col-span-5 md:col-span-4 px-3 py-5">
               {cart?.map((pd) => (
-                <CartProduct key={pd._id} product={pd} />
+                <CartProduct key={pd?._id} product={pd} />
               ))}
             </div>
 
