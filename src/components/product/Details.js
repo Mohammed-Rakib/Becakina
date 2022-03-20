@@ -60,6 +60,7 @@ const Details = () => {
   // add to cart
   const addToCartWithQuantity = () => {
     const pd = { ...product, quantity: quantity };
+    setQuantity(1);
     dispatch(addToCart(pd));
 
     const options = { position: "bottom-center" };
