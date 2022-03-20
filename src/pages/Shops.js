@@ -1,16 +1,16 @@
 import React from "react";
-import Details from "../components/product/Details";
+import AllShops from "../components/shop/AllShops";
 import Footer from "../components/shared/footer/Footer";
 import Header from "../components/shared/header/Header";
 
-const ProductDetails = () => {
+const Shops = () => {
   return (
-    <>
+    <div>
       <Header />
-      <Details />
+      <AllShops />
       <Footer />
-    </>
+    </div>
   );
 };
 
-export default ProductDetails;
+export default Shops;

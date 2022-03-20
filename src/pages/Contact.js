@@ -1,16 +1,16 @@
 import React from "react";
-import Details from "../components/product/Details";
+import ContactUs from "../components/Contact/ContactUs";
 import Footer from "../components/shared/footer/Footer";
 import Header from "../components/shared/header/Header";
 
-const ProductDetails = () => {
+const Contact = () => {
   return (
-    <>
+    <div>
       <Header />
-      <Details />
+      <ContactUs />
       <Footer />
-    </>
+    </div>
   );
 };
 
-export default ProductDetails;
+export default Contact;

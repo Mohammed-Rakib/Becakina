@@ -1,5 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
-import productReducer from "./slices/productSlice";
+import {
+  combineReducers,
+  configureStore,
+  getDefaultMiddleware,
+} from "@reduxjs/toolkit";
+import cartReducer from "./slices/cartSlice";
+import userReducer from "./slices/userSlice";
 import {
   persistReducer,
   FLUSH,
@@ -15,19 +20,21 @@ const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  whitelist: ["cart"],
 };
 
-const persistedReducer = persistReducer(persistConfig, productReducer);
+const reducers = combineReducers({
+  cart: cartReducer,
+  user: userReducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, reducers);
 
 export const store = configureStore({
-  reducer: {
-    products: persistedReducer,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
+  reducer: persistedReducer,
+  middleware: getDefaultMiddleware({
+    serializableCheck: {
+      /* ignore persistance actions */
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
 });

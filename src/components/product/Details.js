@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { addToCart, fetchProducts } from "../../redux/slices/productSlice";
+import { addToCart } from "../../redux/slices/cartSlice";
 import StarRatings from "react-star-ratings";
 import { AiOutlineShopping } from "react-icons/ai";
 import Product from "./product";
@@ -10,18 +10,33 @@ import cogoToast from "cogo-toast";
 const Details = () => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
+  const [product, setProduct] = useState(null);
+  const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, []);
-
-  const products = useSelector((state) => state.products.products);
-  const status = useSelector((state) => state.products.status);
   const { id } = useParams();
 
-  let product = products.find((product) => product._id === id);
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const res = await fetch(
+        `http://localhost:7070/api/products/singleProduct/${id}`
+      );
+      const data = await res.json();
+      setProduct(data);
+    };
+    fetchProduct();
+  }, [id]);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const res = await fetch(`http://localhost:7070/api/products`);
+      const data = await res.json();
+      setProducts(data.data);
+    };
+    fetchProduct();
+  }, [id]);
+
   const relatedProducts = products.filter(
-    (pd) => pd.category === product.category
+    (pd) => pd?.category === product?.category
   );
   const withOutSelectedOne = relatedProducts.filter((pd) => pd._id !== id);
 
@@ -52,7 +67,7 @@ const Details = () => {
   return (
     <section className="bg-gray-50 py-5 ">
       <div className="md:w-9/12 w-11/12 mx-auto bg-white py-5 shadow-lg rounded">
-        {status === "pending" ? (
+        {product === null ? (
           <p className="py-10 flex items-center justify-center text-red-400">
             product loading...
           </p>
@@ -77,7 +92,7 @@ const Details = () => {
                 ratings:{" "}
                 <StarRatings
                   rating={product?.star}
-                  starRatedColor="orange"
+                  starRatedColor="green"
                   starDimension="20px"
                   starSpacing="1px"
                 />
@@ -113,7 +128,7 @@ const Details = () => {
       <div className="py-5 md:w-9/12 w-11/12 mx-auto">
         <h3 className="py-4 text-lg">Related Products</h3>
         <div className=" grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-1">
-          {withOutSelectedOne.slice(0, 3).map((pd) => (
+          {withOutSelectedOne?.slice(0, 3).map((pd) => (
             <Product key={pd._id} product={pd} />
           ))}
         </div>

@@ -9,7 +9,8 @@ import { links } from "./links";
 const MobileMenu = ({ isOpen, setIsOpen }) => {
   const navItems = links;
 
-  const cart = useSelector((state) => state.products.cart);
+  const cart = useSelector((state) => state.cart.cart);
+  const user = useSelector((state) => state.user.user);
   return (
     <div
       className={
@@ -30,11 +31,11 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
           <NavLink
             key={i}
             to={`/${item.path}`}
-            className="px-4 hover:text-orange-400 block py-3 text-white"
+            className="px-4 hover:text-green-500 block py-3 text-white"
             style={({ isActive }) => {
               return {
                 display: "block",
-                color: isActive ? "orange" : "",
+                color: isActive ? "green" : "",
               };
             }}
           >
@@ -43,16 +44,25 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
         ))}
       </div>
 
-      <div className="flex space-x-4 text-white mt-9">
+      <div className="flex space-x-4 text-white mt-9 relative">
         <Link to="/search" className="px-3 border-r-2 border-gray-400">
-          <HiOutlineSearch className="text-2xl hover:text-orange-400 " />
+          <HiOutlineSearch className="text-2xl hover:text-green-500 " />
         </Link>
-        <Link to="/account" className="px-3 border-r-2 border-gray-400">
-          <FiUser className="text-2xl hover:text-orange-400 " />
-        </Link>
+        {user ? (
+          <Link
+            to="/dashboard/profile"
+            className="px-3 border-r-2 border-gray-400"
+          >
+            <FiUser className="text-2xl hover:text-green-500 " />
+          </Link>
+        ) : (
+          <Link to="/signin" className="px-3 border-r-2 border-gray-400">
+            <FiUser className="text-2xl hover:text-green-500 " />
+          </Link>
+        )}
         <Link to="/cart" className="px-3  relative">
-          <AiOutlineShopping className="text-2xl hover:text-orange-400 relative " />
-          <span className="absolute bottom-3 right-1 bg-orange-400 px-1 text-sm rounded-full">
+          <AiOutlineShopping className="text-2xl hover:text-green-500 relative " />
+          <span className="absolute bottom-3 right-1 bg-green-400 px-1 text-sm rounded-full">
             {cart.length}
           </span>
         </Link>

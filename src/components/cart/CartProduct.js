@@ -1,11 +1,14 @@
 import React from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { removeFromCart } from "../../redux/slices/productSlice";
+import { removeFromCart } from "../../redux/slices/cartSlice";
 import cogoToast from "cogo-toast";
+import { useNavigate } from "react-router-dom";
 
 const CartProduct = (props) => {
   const { _id, img, name, price, quantity } = props.product;
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -20,7 +23,12 @@ const CartProduct = (props) => {
     <div className="sm:flex shadow-md my-3 px-2 py-3 rounded items-center">
       <img className="xl:h-56 lg:h-40 md:h-36 h-32 my-2" src={img} alt="" />
       <div className="px-2">
-        <h1>{name?.slice(0, 50)}...</h1>
+        <h1
+          onClick={() => navigate(`/products/${_id}`)}
+          className="hover:text-blue-600 hover:underline hover:cursor-pointer"
+        >
+          {name?.slice(0, 50)}...
+        </h1>
         <p className="py-2">
           $<strong>{price}</strong>
         </p>

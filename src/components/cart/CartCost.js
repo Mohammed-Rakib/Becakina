@@ -1,9 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import CurrencyFormat from "react-currency-format";
+import { Link } from "react-router-dom";
 
 const CartCost = () => {
-  const cart = useSelector((state) => state.products.cart);
+  const cart = useSelector((state) => state.cart.cart);
 
   const items = cart.reduce((quantity, item) => quantity + item.quantity, 0);
   const shippingCost = cart.reduce(
@@ -47,9 +48,12 @@ const CartCost = () => {
         </strong>
       </p>
       <div className="flex ">
-        <button className="shadow-lg py-2 px-3 bg-green-700 text-white text-center rounded border border-gray-100">
+        <Link
+          to="/checkout"
+          className="shadow-lg py-2 px-3 bg-green-700 text-white text-center rounded border border-gray-100"
+        >
           Checkout
-        </button>
+        </Link>
       </div>
     </div>
   );
