@@ -30,6 +30,7 @@ const SigninForm = () => {
       )
       .then((response) => {
         dispatch(signin(response.data));
+        navigate("/");
       })
       .catch((error) => {
         const options = { position: "bottom-center" };

@@ -19,34 +19,40 @@ const Navigation = () => {
       <div className="md:w-9/12 w-11/12 mx-auto flex justify-between items-center py-2">
         <div>
           <Link to="/">
-            <h1 className="xl:text-5xl  md:text-4xl text-3xl font-bold first-letter:text-pink-500">
-              Beca K<span className="text-green-500">i</span>na
+            <h1 className="xl:text-5xl  md:text-4xl tracking-wider text-3xl font-extrabold first-letter:text-pink-500">
+              Becakina
             </h1>
           </Link>
         </div>
 
         {/* profile and cart */}
         <div className="md:flex hidden items-center relative">
-          <Link to="/search" className="px-3 border-r-2 border-gray-400">
+          <Link to="/search" className="px-3 border-r-2 border-gray-400 flex">
             <HiOutlineSearch className="text-2xl hover:text-green-500 " />
+            Search
           </Link>
           {user ? (
             <Link
               to="/dashboard/profile"
-              className="px-3 border-r-2 border-gray-400"
+              className="px-3 border-r-2 border-gray-400 flex"
             >
-              <FiUser className="text-2xl hover:text-green-500 " />
+              <FiUser className="text-2xl hover:text-green-500 " /> Profile
             </Link>
           ) : (
-            <Link to="/signin" className="px-3 border-r-2 border-gray-400">
+            <Link
+              to="/signin"
+              className="px-3 border-r-2 border-gray-400 flex items-center"
+            >
               <FiUser className="text-2xl hover:text-green-500 " />
+              Account
             </Link>
           )}
-          <Link to="/cart" className="px-3  relative">
+          <Link to="/cart" className="px-3 relative  flex">
             <AiOutlineShopping className="text-2xl hover:text-green-500 relative " />
-            <span className="absolute bottom-3 right-1 bg-green-500 w-5 text-center text-sm rounded-full">
+            <span className=" shadow-md w-auto absolute z-10 px-2 rounded-full bg-red-500 text-white bottom-4 right-10">
               {cart?.length}
             </span>
+            Cart
           </Link>
         </div>
 
