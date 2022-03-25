@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "../components/dashboard/dashboardLayot/Layout";
+import Profile from "../components/dashboard/profile/Profile";
 import Orders from "../components/dashboard/user/Orders";
 import About from "../pages/About";
 import Cart from "../pages/Cart";
@@ -23,7 +24,7 @@ const Navigatinons = () => {
 
       <Route element={<ProtectedRoutes />}>
         <Route path="dashboard" element={<Dashboard />}>
-          <Route path="profile" element={<>Hello</>} />
+          <Route path="profile" element={<Profile />} />
           <Route path="editProfile" element={<h1>Yarn</h1>} />
           <Route path="orders" element={<Orders />} />
         </Route>
