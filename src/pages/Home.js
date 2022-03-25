@@ -5,7 +5,6 @@ import FeaturedProducts from "../components/home/products/featuredProducts";
 import Footer from "../components/shared/footer/Footer";
 
 import Header from "../components/shared/header/Header";
-import ScrollToTop from "react-scroll-to-top";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -18,10 +17,6 @@ const Home = () => {
 
   return (
     <>
-      <ScrollToTop
-        smooth
-        style={{ paddingLeft: "4px", border: "1px solid cyan", color: "white" }}
-      />
       <Header />
       {products?.length === 0 ? (
         <div

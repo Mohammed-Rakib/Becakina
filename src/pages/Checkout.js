@@ -9,7 +9,7 @@ const Checkout = () => {
     <>
       <Header />
       <CheckoutLayout />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

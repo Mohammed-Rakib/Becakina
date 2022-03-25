@@ -1,10 +1,10 @@
 import React from "react";
-import Profile from "../components/dashboard/profile/Profile";
+import Layout from "../components/dashboard/dashboardLayot/Layout";
 
 const Dashboard = () => {
   return (
     <>
-      <Profile />
+      <Layout />
     </>
   );
 };

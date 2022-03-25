@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "../components/dashboard/dashboardLayot/Layout";
+import Orders from "../components/dashboard/user/Orders";
 import About from "../pages/About";
 import Cart from "../pages/Cart";
 import Checkout from "../pages/Checkout";
@@ -21,9 +22,10 @@ const Navigatinons = () => {
       {/* // protected routes */}
 
       <Route element={<ProtectedRoutes />}>
-        <Route path="dashboard" element={<Layout />}>
-          <Route path="profile" element={<Dashboard />} />
-          <Route path="hello" element={<h1>Yarn</h1>} />
+        <Route path="dashboard" element={<Dashboard />}>
+          <Route path="profile" element={<>Hello</>} />
+          <Route path="editProfile" element={<h1>Yarn</h1>} />
+          <Route path="orders" element={<Orders />} />
         </Route>
       </Route>
 
