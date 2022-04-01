@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import cogoToast from "cogo-toast";
 
 import Product from "../product/product";
 
 const Layout = () => {
   const [text, setText] = useState("");
+  const [category, setCategory] = useState("");
+
   const [loading, setLoading] = useState(false);
 
   const [products, setProducts] = useState([]);
@@ -16,7 +17,7 @@ const Layout = () => {
     setLoading(true);
     const fetchProducts = async () => {
       const res = await fetch(
-        `https://still-eyrie-85728.herokuapp.com/api/products?page=${page}&&size=${size}`
+        `https://still-eyrie-85728.herokuapp.com/api/products?page=${page}&&size=${size}&&name=${text.toLowerCase()}`
       );
       const data = await res.json();
       setProducts(data.data);
@@ -27,26 +28,35 @@ const Layout = () => {
   }, [page]);
 
   // searchHandler
-  const searchHandler = () => {
-    if (!text) {
-      cogoToast.warn("Please input something");
-    } else {
-      setLoading(true);
-      fetch(
-        `https://still-eyrie-85728.herokuapp.com/api/products/search?name=${text}`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          setPages(0);
-          const uniqUsers = [
-            ...data
-              .reduce((map, obj) => map.set(obj._id, obj), new Map())
-              .values(),
-          ];
-          setLoading(false);
-          setProducts(uniqUsers);
-        });
-    }
+  const searchHandler = async (e) => {
+    setText(e.target.value);
+    setCategory("");
+    setLoading(true);
+
+    const res = await fetch(
+      `https://still-eyrie-85728.herokuapp.com/api/products?page=${page}&&size=${size}&&name=${text.toLowerCase()}`
+    );
+    const data = await res.json();
+    setProducts(data.data);
+    setPages(Math.ceil(data.count / size));
+    setLoading(false);
+  };
+
+  // filter products
+  const filterProducts = async (e) => {
+    setLoading(true);
+    setText("");
+    setCategory(e.target.value);
+
+    fetch(
+      `https://still-eyrie-85728.herokuapp.com/api/products?page=${page}&&size=${size}&&name=${e.target.value.toLowerCase()}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data.data);
+        setPages(Math.ceil(data.count / size));
+        setLoading(false);
+      });
   };
 
   // next page handler
@@ -69,20 +79,35 @@ const Layout = () => {
     <section className="py-5 bg-blue-50">
       <div className="md:w-9/12 w-11/12 mx-auto">
         {/* // search for products  */}
-        <div className=" py-10 flex justify-center items-center">
-          <input
-            type="text"
-            className="focus:outline-none border md:w-96 border-gray-400 rounded px-2 py-2"
-            placeholder="Search for products..."
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
-          <button
-            onClick={searchHandler}
-            className="py-2 px-4 bg-gray-800 text-white"
+        <div className=" py-10 flex flex-wrap lg:justify-between justify-center items-center">
+          {/* // filter products */}
+          <select
+            value={category}
+            className="focus:outline-none w-56 px-4 py-2 my-2"
+            onChange={filterProducts}
           >
-            Search
-          </button>
+            <option value="">All Products</option>
+            <option value="laptop">Laptop</option>
+            <option value="camera">Camera</option>
+            <option value="android">Android</option>
+          </select>
+
+          {/* // search products */}
+          <div className="flex items-center justify-center my-2">
+            <input
+              type="text"
+              className="focus:outline-none border md:w-96 w-full border-gray-400 rounded px-2 py-2"
+              placeholder="Search for products..."
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            />
+            <button
+              onClick={searchHandler}
+              className="py-2 px-4 bg-gray-800 text-white"
+            >
+              Search
+            </button>
+          </div>
         </div>
 
         {/* // all products  */}

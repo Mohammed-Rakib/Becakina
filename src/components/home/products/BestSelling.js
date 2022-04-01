@@ -2,7 +2,11 @@ import React from "react";
 import Product from "../../product/product";
 
 const BestSelling = (props) => {
-  const products = props.products;
+  console.log(props.products);
+  const products = props.products.sort((a, b) => {
+    if (a.star > b.star) return -1;
+    return 1;
+  });
 
   return (
     <section className="bg-blue-50">

@@ -2,7 +2,13 @@ import React from "react";
 
 const ContactUs = () => {
   return (
-    <div className=" lg:w-6/12 md:w-7/12 sm:w-8/12 w-11/12 mx-auto py-10">
+    <div className=" lg:w-9/12 md:w-10/12 sm:w-11/12 w-11/12 flex items-center justify-center  flex-wrap mx-auto py-10">
+      <div>
+        <img
+          src="https://i.postimg.cc/Cx1KS4c6/contact-us-illustration-free-vector-removebg-preview.png"
+          alt=""
+        />
+      </div>
       <div>
         <h1 className="text-3xl font-thin py-5 text-center italic text-yellow-800">
           Contact Us.

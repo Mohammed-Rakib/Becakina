@@ -6,18 +6,18 @@ const Menu = () => {
   const navItems = links;
 
   return (
-    <div className="md:block hidden 0 py-4  uppercase">
+    <div className="md:block hidden 0 py-4  capitalize">
       <div className="md:w-9/12 w-11/12 mx-auto flex items-center justify-center">
         {navItems.map((item, i) => (
           <NavLink
             key={i}
             to={`/${item.path}`}
-            className="px-4 hover:text-green-600"
+            className="px-4 hover:text-orange-500 font-semibold"
             style={({ isActive }) => {
               return {
                 display: "block",
                 margin: "1rem 0",
-                color: isActive ? "green" : "",
+                color: isActive ? "tomato" : "",
               };
             }}
           >

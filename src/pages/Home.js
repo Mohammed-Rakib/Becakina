@@ -28,7 +28,7 @@ const Home = () => {
       ) : (
         <>
           <BestSelling products={products} />
-          <FeaturedProducts products={products} />
+          <FeaturedProducts />
         </>
       )}
       <Footer />

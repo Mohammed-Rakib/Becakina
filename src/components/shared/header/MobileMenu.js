@@ -31,11 +31,11 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
           <NavLink
             key={i}
             to={`/${item.path}`}
-            className="px-4 hover:text-green-500 block py-3 text-white"
+            className="px-4 hover:text-orange-500 block py-3 text-white"
             style={({ isActive }) => {
               return {
                 display: "block",
-                color: isActive ? "green" : "",
+                color: isActive ? "orange" : "",
               };
             }}
           >
@@ -46,23 +46,23 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
 
       <div className="flex space-x-4 text-white mt-9 relative">
         <Link to="/search" className="px-3 border-r-2 border-gray-400">
-          <HiOutlineSearch className="text-2xl hover:text-green-500 " />
+          <HiOutlineSearch className="text-2xl hover:text-orange-500 " />
         </Link>
         {user ? (
           <Link
             to="/dashboard/profile"
             className="px-3 border-r-2 border-gray-400"
           >
-            <FiUser className="text-2xl hover:text-green-500 " />
+            <FiUser className="text-2xl hover:text-orange-500 " />
           </Link>
         ) : (
           <Link to="/signin" className="px-3 border-r-2 border-gray-400">
-            <FiUser className="text-2xl hover:text-green-500 " />
+            <FiUser className="text-2xl hover:text-orange-500 " />
           </Link>
         )}
         <Link to="/cart" className="px-3  relative">
-          <AiOutlineShopping className="text-2xl hover:text-green-500 relative " />
-          <span className="absolute bottom-3 right-1 bg-green-400 px-1 text-sm rounded-full">
+          <AiOutlineShopping className="text-2xl hover:text-orange-500 relative " />
+          <span className="absolute bottom-3 right-1 bg-orange-400 px-1 text-sm rounded-full">
             {cart?.length}
           </span>
         </Link>

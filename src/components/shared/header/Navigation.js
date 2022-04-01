@@ -26,9 +26,9 @@ const Navigation = () => {
         </div>
 
         {/* profile and cart */}
-        <div className="md:flex hidden items-center relative">
+        <div className="md:flex hidden items-center relative font-semibold">
           <Link to="/search" className="px-3 border-r-2 border-gray-400 flex">
-            <HiOutlineSearch className="text-2xl hover:text-green-500 " />
+            <HiOutlineSearch className="text-2xl hover:text-orange-500 " />
             Search
           </Link>
           {user ? (
@@ -36,19 +36,19 @@ const Navigation = () => {
               to="/dashboard/profile"
               className="px-3 border-r-2 border-gray-400 flex"
             >
-              <FiUser className="text-2xl hover:text-green-500 " /> Profile
+              <FiUser className="text-2xl hover:text-orange-500 " /> Profile
             </Link>
           ) : (
             <Link
               to="/signin"
               className="px-3 border-r-2 border-gray-400 flex items-center"
             >
-              <FiUser className="text-2xl hover:text-green-500 " />
+              <FiUser className="text-2xl hover:text-orange-500 " />
               Account
             </Link>
           )}
           <Link to="/cart" className="px-3 relative  flex">
-            <AiOutlineShopping className="text-2xl hover:text-green-500 relative " />
+            <AiOutlineShopping className="text-2xl hover:text-orange-500 relative " />
             <span className=" shadow-md w-auto absolute z-10 px-2 rounded-full bg-red-500 text-white bottom-4 right-10">
               {cart?.length}
             </span>
