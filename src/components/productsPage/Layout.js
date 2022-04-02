@@ -28,9 +28,7 @@ const Layout = () => {
   }, [page]);
 
   // searchHandler
-  const searchHandler = async (e) => {
-    setText(e.target.value);
-    setCategory("");
+  const searchHandler = async () => {
     setLoading(true);
 
     const res = await fetch(
@@ -45,8 +43,8 @@ const Layout = () => {
   // filter products
   const filterProducts = async (e) => {
     setLoading(true);
-    setText("");
     setCategory(e.target.value);
+    setText(e.target.value);
 
     fetch(
       `https://still-eyrie-85728.herokuapp.com/api/products?page=${page}&&size=${size}&&name=${e.target.value.toLowerCase()}`
