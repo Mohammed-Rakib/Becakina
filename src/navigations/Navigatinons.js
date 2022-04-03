@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Default from "../components/dashboard/profile/Default";
 import Profile from "../components/dashboard/profile/Profile";
 import Orders from "../components/dashboard/user/Orders";
 import About from "../pages/About";
@@ -23,6 +24,7 @@ const Navigatinons = () => {
 
       <Route element={<ProtectedRoutes />}>
         <Route path="dashboard" element={<Dashboard />}>
+          <Route path="default" element={<Default />} />
           <Route path="profile" element={<Profile />} />
           <Route path="editProfile" element={<h1>Yarn</h1>} />
           <Route path="orders" element={<Orders />} />

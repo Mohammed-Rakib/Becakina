@@ -3,9 +3,9 @@ import Layout from "../components/dashboard/dashboardLayout/Layout";
 
 const Dashboard = () => {
   return (
-    <>
+    <div className="h-screen">
       <Layout />
-    </>
+    </div>
   );
 };
 
