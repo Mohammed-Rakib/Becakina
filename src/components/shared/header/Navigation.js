@@ -16,10 +16,10 @@ const Navigation = () => {
 
   return (
     <div className="py-4 ">
-      <div className="md:w-9/12 w-11/12 mx-auto flex justify-between items-center py-2">
+      <div className="md:w-9/12 w-11/12 mx-auto flex justify-between items-center pt-2">
         <div>
           <Link to="/">
-            <h1 className="xl:text-5xl  md:text-4xl tracking-wider text-3xl font-extrabold first-letter:text-pink-500">
+            <h1 className="xl:text-5xl logo text-green-400 font-extrabold tracking-widest md:text-4xl  text-3xl  first-letter:text-pink-500">
               Becakina
             </h1>
           </Link>
@@ -33,7 +33,7 @@ const Navigation = () => {
           </Link>
           {user ? (
             <Link
-              to="/dashboard/profile"
+              to="/dashboard/default"
               className="px-3 border-r-2 border-gray-400 flex"
             >
               <FiUser className="text-2xl hover:text-orange-500 " /> Profile

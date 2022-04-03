@@ -37,6 +37,7 @@ const Navigatinons = () => {
 
       {/* protected routes endpoints */}
       <Route path="/products" element={<Products />} />
+
       <Route path="/signin" element={<Signin />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/search" element={<Products />} />

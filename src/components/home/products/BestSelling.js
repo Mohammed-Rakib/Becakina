@@ -14,8 +14,12 @@ const BestSelling = (props) => {
         <h1 className="text-3xl py-5   ">Top Selling.</h1>
 
         <div className=" py-2 grid  md:grid-cols-3 gap-2  sm:grid-cols-2 grid-cols-1">
-          {products?.slice(12, 15).map((product) => (
-            <Product key={product._id} product={product}></Product>
+          {products?.slice(0, 3).map((product) => (
+            <Product
+              key={product._id}
+              topSelling={true}
+              product={product}
+            ></Product>
           ))}
         </div>
       </div>

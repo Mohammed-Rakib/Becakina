@@ -6,7 +6,7 @@ const Menu = () => {
   const navItems = links;
 
   return (
-    <div className="md:block hidden 0 py-4  capitalize">
+    <div className="md:block hidden pb-2 capitalize">
       <div className="md:w-9/12 w-11/12 mx-auto flex items-center justify-center">
         {navItems.map((item, i) => (
           <NavLink

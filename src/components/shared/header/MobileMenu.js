@@ -50,7 +50,7 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
         </Link>
         {user ? (
           <Link
-            to="/dashboard/profile"
+            to="/dashboard/default"
             className="px-3 border-r-2 border-gray-400"
           >
             <FiUser className="text-2xl hover:text-orange-500 " />

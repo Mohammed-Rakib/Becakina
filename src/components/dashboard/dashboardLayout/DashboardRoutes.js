@@ -44,14 +44,8 @@ const DashboardRoutes = ({ isOpen, setIsOpen }) => {
         to="/dashboard/profile"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <CgProfile className="text-xl mr-2 text-cyan-400" /> Profile
-      </Link>
-      <Link
-        className="flex items-center   px-4 py-2 rounded my-3 border"
-        to="/dashboard/editProfile"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <FcEditImage className="text-xl mr-2" /> Edit Profile
+        <FcEditImage className="text-xl mr-2" />
+        Profile
       </Link>
       <Link
         className="flex items-center   px-4 py-2 rounded my-3 border"
@@ -62,7 +56,7 @@ const DashboardRoutes = ({ isOpen, setIsOpen }) => {
         Orders
       </Link>
 
-      <div className="absolute bottom-3">
+      <div className="absolute w-full bottom-3">
         <div
           className="flex items-center justify-between  w-56 px-4 py-2 rounded my-3 border"
           onClick={() => setTrigger(!trigger)}
@@ -71,16 +65,23 @@ const DashboardRoutes = ({ isOpen, setIsOpen }) => {
           {trigger ? <BsChevronDown /> : <IoIosArrowUp className="text-lg" />}
         </div>
 
-        {/* {trigger && ( */}
-        <div>
-          <button
-            onClick={logOut}
-            className="block bg-red-500 text-white w-56  px-4 py-1 rounded "
-          >
-            Sign Out
-          </button>
-        </div>
-        {/* )} */}
+        {trigger && (
+          <div className="w-full">
+            <button
+              onClick={logOut}
+              className="block bg-red-500 text-white w-56  px-4 py-1 rounded "
+            >
+              Sign Out
+            </button>
+            <Link
+              className="flex items-center  justify-center w-56 px-4 underline text-blue-600 rounded my-3 r"
+              to="/"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              Go to Home Page
+            </Link>
+          </div>
+        )}
       </div>
     </>
   );

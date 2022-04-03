@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,6 +9,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { useSelector } from "react-redux";
 
 ChartJS.register(
   CategoryScale,
@@ -27,26 +28,44 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Chart.js Bar Chart",
+      text: "My Orders",
     },
   },
 };
 
-const labels = ["January", "February", "March", "April", "May", "June"];
-
-const data = {
-  labels: labels,
-  datasets: [
-    {
-      label: "My First dataset",
-      backgroundColor: "rgb(255, 99, 132)",
-      borderColor: "rgb(255, 99, 132)",
-      data: [0, 10, 5, 2, 20, 30, 45],
-    },
-  ],
-};
-
 const Chart = () => {
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const user = useSelector((state) => state.user.user);
+
+  useEffect(() => {
+    setLoading(true);
+    const fetchOrders = async () => {
+      const res = await fetch(
+        `https://still-eyrie-85728.herokuapp.com/api/orders/user/${user._id}`
+      );
+      const data = await res.json();
+      setLoading(false);
+      setOrders(data);
+    };
+    fetchOrders();
+  }, [user._id]);
+
+  const labels = orders?.map((order) => order.productId.name.slice(0, 8));
+  const quantity = orders?.map((order) => order.quantity);
+
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: "Products Quantity",
+        backgroundColor: "rgb(255, 99, 132)",
+        borderColor: "rgb(255, 99, 132)",
+        data: quantity,
+      },
+    ],
+  };
+
   return <Bar options={options} data={data} />;
 };
 

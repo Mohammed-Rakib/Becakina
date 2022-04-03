@@ -31,6 +31,8 @@ const SigninForm = () => {
       .then((response) => {
         dispatch(signin(response.data));
         navigate("/");
+        const options = { position: "bottom-center" };
+        cogoToast.success("Signin successfull", options);
       })
       .catch((error) => {
         const options = { position: "bottom-center" };

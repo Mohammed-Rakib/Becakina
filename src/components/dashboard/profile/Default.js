@@ -32,7 +32,7 @@ const Default = () => {
       {/* dashboard statistics */}
       <div className="md:grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3 py-10">
         <div className="text-center bg-white px-6 py-3 my-2 rounded">
-          <h1>Total Orders</h1>
+          <h1 className="font-semibold">Total Orders</h1>
           <div className=" px-3 py-3 rounded">
             <p className="py-2">Products: {orders?.length}</p>
             <p>Quantity: {quantity} </p>
@@ -40,15 +40,15 @@ const Default = () => {
         </div>
         {/* total costs */}
         <div className="text-center bg-white px-6 py-3 my-3  rounded ">
-          <h1>Total Costs</h1>
+          <h1 className="font-semibold">Total Costs</h1>
           <div className=" px-3 py-3 rounded">
-            <p className="py-2"> Orders: {orders?.length + quantity}</p>
+            <p className="py-2"> Orders: {quantity}</p>
             <p>Costs: $ {totalCosts} </p>
           </div>
         </div>
         {/* payment method */}
         <div className="text-center bg-white px-6 py-3 my-3  rounded  ">
-          <h1>Payment Methods</h1>
+          <h1 className="font-semibold">Payment Methods</h1>
           <div className=" px-3 py-2 rounded">
             <p className="py-2"> Verified</p>
             <p className="flex justify-center">

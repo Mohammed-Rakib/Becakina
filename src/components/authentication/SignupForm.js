@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import cogoToast from "cogo-toast";
 import { useDispatch } from "react-redux";
@@ -35,6 +35,8 @@ const SignupForm = () => {
       .then((response) => {
         dispatch(signin(response.data));
         navigate("/dashboard/profile");
+        const options = { position: "bottom-center" };
+        cogoToast.success("Signup Sucessfully", options);
       })
       .catch((error) => {
         const options = { position: "bottom-center" };
