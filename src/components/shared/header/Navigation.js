@@ -15,7 +15,7 @@ const Navigation = () => {
   const user = useSelector((state) => state.user.user);
 
   return (
-    <div className="pt-4 ">
+    <div className="md:pt-4 pt-2 md:pb-0 pb-3">
       <div className="md:w-9/12 w-11/12 mx-auto flex justify-between items-center pt-2">
         <div>
           <Link to="/">

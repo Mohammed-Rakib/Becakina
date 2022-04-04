@@ -15,7 +15,7 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
     <div
       className={
         isOpen
-          ? "md:hidden absolute top-0 bottom-0 w-56 px-4 right-0 bg-gray-800"
+          ? "md:hidden absolute z-10 top-0 bottom-0 w-56 px-4 right-0 bg-gray-800"
           : "hidden "
       }
     >

@@ -16,6 +16,11 @@ export const links = [
     name: "shops",
   },
   {
+    key: "12412",
+    path: "reviews",
+    name: "reviews",
+  },
+  {
     key: "1532",
     path: "contact",
     name: "contact",

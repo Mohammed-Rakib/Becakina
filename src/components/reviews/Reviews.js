@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router-dom";
+import { BsArrowRight } from "react-icons/bs";
 
 // Import Swiper styles
 import "swiper/css";
@@ -63,6 +65,14 @@ const Reviews = () => {
             ))}
           </div>
         </Swiper>
+        <div className="flex justify-center py-5">
+          <Link
+            className="px-5 flex justify-center items-center py-2 rounded-3xl bg-pink-500 text-white"
+            to="/reviews"
+          >
+            Read All Reviews <BsArrowRight className="ml-2" />
+          </Link>
+        </div>
       </div>
     </section>
   );

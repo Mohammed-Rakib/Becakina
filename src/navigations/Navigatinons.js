@@ -12,6 +12,7 @@ import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
 import ProductDetails from "../pages/ProductDetails";
 import Products from "../pages/Products";
+import Reviews from "../pages/Reviews";
 import Shops from "../pages/Shops";
 import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
@@ -46,6 +47,7 @@ const Navigatinons = () => {
       <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/shops" element={<Shops />} />
+      <Route path="/reviews" element={<Reviews />} />
       <Route path="/contact" element={<Contact />} />
       <Route index path="/" element={<Home />} />
       <Route path="*" element={<NotFound />} />

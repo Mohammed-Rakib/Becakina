@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import cogoToast from "cogo-toast";
@@ -10,6 +10,7 @@ import { signin } from "../../redux/slices/userSlice";
 const SigninForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const {
     register,
@@ -30,7 +31,9 @@ const SigninForm = () => {
       )
       .then((response) => {
         dispatch(signin(response.data));
-        navigate("/");
+        if (location.pathname === "/signin") {
+          navigate("/");
+        }
         const options = { position: "bottom-center" };
         cogoToast.success("Signin successfull", options);
       })
@@ -40,7 +43,7 @@ const SigninForm = () => {
       });
   };
   return (
-    <div className="md:px-0 px-2">
+    <div className="lg:py-28 md:px-0 px-2">
       <h1 className="text-3xl font-thin text-center italic text-yellow-800">
         Sign In.
       </h1>

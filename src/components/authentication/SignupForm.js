@@ -16,6 +16,7 @@ const SignupForm = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const password = useRef({});
   password.current = watch("password", "");
@@ -34,7 +35,10 @@ const SignupForm = () => {
       )
       .then((response) => {
         dispatch(signin(response.data));
-        navigate("/dashboard/profile");
+        if (location.pathname === "/signup") {
+          navigate("/dashboard/profile");
+        }
+
         const options = { position: "bottom-center" };
         cogoToast.success("Signup Sucessfully", options);
       })

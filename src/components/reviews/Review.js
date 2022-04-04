@@ -1,7 +1,7 @@
 import React from "react";
 import StarRatings from "react-star-ratings";
 
-const Review = ({ review }) => {
+const Review = ({ review, reviewPage }) => {
   return (
     <div className="mx-2 my-2 bg-white xl:px-2 px-1 rounded py-2 hover:shadow-lg text-center transition-all duration-600">
       <div className="flex justify-center">
@@ -20,7 +20,11 @@ const Review = ({ review }) => {
           starSpacing="1px"
         />
       </p>
-      <p className="py-3">{review?.feedback.slice(0, 65)}</p>
+      {reviewPage ? (
+        <p className="py-3">{review?.feedback}</p>
+      ) : (
+        <p className="py-3">{review?.feedback.slice(0, 65)}</p>
+      )}
     </div>
   );
 };
