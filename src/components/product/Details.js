@@ -95,7 +95,7 @@ const Details = () => {
                 ratings:{" "}
                 <StarRatings
                   rating={product?.star}
-                  starRatedColor="green"
+                  starRatedColor="orange"
                   starDimension="20px"
                   starSpacing="1px"
                 />

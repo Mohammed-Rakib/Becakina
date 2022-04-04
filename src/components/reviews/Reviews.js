@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Product from "../../product/product";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -9,13 +8,22 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
+import Review from "./Review";
 
-const BestSelling = (props) => {
+const Reviews = () => {
+  const [reviews, setReviews] = useState([]);
   const [widths, setWidths] = useState(0);
-  const products = props.products.sort((a, b) => {
-    if (a.star > b.star) return -1;
-    return 1;
-  });
+
+  useEffect(() => {
+    const reviewLoad = async () => {
+      const response = await fetch(
+        "https://still-eyrie-85728.herokuapp.com/api/reviews"
+      );
+      const data = await response.json();
+      setReviews(data);
+    };
+    reviewLoad();
+  }, [reviews]);
 
   // responsive swiper
   useEffect(() => {
@@ -32,18 +40,14 @@ const BestSelling = (props) => {
       window.removeEventListener("mouseover", handleResize);
     };
   }, []);
-
   return (
-    <section className="bg-blue-50">
-      <div className="md:w-9/12 w-11/12 mx-auto py-7">
-        <h1 className="text-3xl py-5 text-center font-medium">Top Selling.</h1>
-
+    <section className="bg-blue-50 pb-12">
+      <div className="md:w-9/12 w-11/12 mx-auto ">
+        <h2 className="text-center text-3xl  font-semibold py-6">
+          Customers Reviews
+        </h2>
         <Swiper
           slidesPerView={`${widths < 780 ? 1 : 3}`}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
           pagination={{
             clickable: true,
           }}
@@ -52,9 +56,9 @@ const BestSelling = (props) => {
           className="mySwiper"
         >
           <div className=" py-2 grid  md:grid-cols-3 gap-2  sm:grid-cols-2 grid-cols-1">
-            {products?.slice(0, 6).map((product) => (
-              <SwiperSlide key={product._id}>
-                <Product topSelling={true} product={product}></Product>
+            {reviews?.slice(0, 6).map((review) => (
+              <SwiperSlide key={review._id}>
+                <Review topSelling={true} review={review}></Review>
               </SwiperSlide>
             ))}
           </div>
@@ -64,4 +68,4 @@ const BestSelling = (props) => {
   );
 };
 
-export default BestSelling;
+export default Reviews;

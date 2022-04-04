@@ -12,7 +12,7 @@ const Product = (props) => {
       className="mx-2 my-2 bg-white xl:px-2 px-1 rounded py-2 hover:shadow-lg hover:cursor-pointer transition-all duration-600"
     >
       <img className="px-5 py-5" src={img} alt={name} />
-      <h4 className="text-sm px-3">{name.slice(0, 55)}...</h4>
+      <h4 className="text-sm px-3">{name.slice(0, 50)}...</h4>
       {props.topSelling && (
         <div>
           <p className="text-sm px-3 pt-2">

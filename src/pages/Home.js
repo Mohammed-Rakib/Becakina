@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import BestSelling from "../components/home/products/BestSelling";
 import FeaturedProducts from "../components/home/products/featuredProducts";
 import ShareReview from "../components/home/reviews/ShareReview";
+import Reviews from "../components/reviews/Reviews";
 import Footer from "../components/shared/footer/Footer";
 
 import Header from "../components/shared/header/Header";
@@ -33,6 +34,7 @@ const Home = () => {
         </>
       )}
       <ShareReview />
+      <Reviews />
       <Footer />
     </>
   );

@@ -126,7 +126,7 @@ const SignupForm = () => {
         <div className="flex justify-center py-4">
           <input
             type="submit"
-            className="border px-5 py-2 rounded-3xl cursor-pointer hover:bg-slate-800 hover:text-white transition-all duration-300 "
+            className="border px-5 py-2 rounded cursor-pointer bg-pink-500 text-white hover:bg-pink-600 hover:text-white transition-all duration-300 "
             value="Continue"
           />
         </div>
