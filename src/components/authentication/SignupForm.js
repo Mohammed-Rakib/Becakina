@@ -57,6 +57,7 @@ const SignupForm = () => {
           <input
             className="md:w-96 w-full py-1  border border-slate-300 rounded focus:outline-none  px-2"
             {...register("username", { required: true, minLength: 2 })}
+            autoComplete="false"
           />
           {/* errors will return when field validation fails  */}
           {errors.username && (
@@ -71,6 +72,7 @@ const SignupForm = () => {
           <input
             className="md:w-96 w-full py-1  border border-slate-300 rounded focus:outline-none  px-2"
             {...register("email", { required: true })}
+            autoComplete="false"
           />
           {/* errors will return when field validation fails  */}
           {errors.email && (
@@ -89,6 +91,7 @@ const SignupForm = () => {
               required: true,
               pattern: /^(?=.{6,})/,
             })}
+            autoComplete="false"
           />
           {/* errors will return when field validation fails  */}
           <span className="text-sm text-red-500 block">
@@ -110,6 +113,7 @@ const SignupForm = () => {
               validate: (value) =>
                 value === password.current || "The passwords do not match",
             })}
+            autoComplete="false"
           />
           {/* errors will return when field validation fails  */}
           <span className="text-sm text-red-500 block">

@@ -24,7 +24,7 @@ const CartLayout = () => {
             </div>
           </div>
         ) : (
-          <div>
+          <div className="" style={{ height: "40vh" }}>
             <p>
               Nothing in your Cart. Please make sure to add{" "}
               <Link className="text-blue-500 underline" to="/products">
